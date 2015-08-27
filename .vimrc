@@ -15,6 +15,7 @@ Plugin 'fatih/vim-go'
 Plugin 'majutsushi/tagbar'
 Plugin 'rking/ag.vim'
 Plugin 'tpope/vim-fugitive'
+Plugin 'alfredodeza/pytest.vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -54,17 +55,6 @@ set statusline=%F%m%r%h%w\ [FORMAT=%{&ff},\ %{&fenc}]\ [TYPE=%Y]\ [POS=%04l,%04v
 set laststatus=2
 set visualbell
 " set cscopetag
-" set cindent
-" set autoindent
-" set smartindent
-set tabstop=8
-"set softtabstop=4
-set shiftwidth=8
-"set shiftwidth=4
-"set noexpandtab
-"set expandtab
-"set smarttab
-set cino=:0,g0,t0
 set completeopt=menu,longest,preview
 set foldenable
 set foldmethod=indent
@@ -86,7 +76,7 @@ let use_xhtml = 1
 
 autocmd BufEnter * :syntax sync fromstart
 highlight WhitespaceEOL ctermbg=red guibg=red
-match WhitespaceEOL /\s\+$/
+match WhitespaceEOL '\s\+$'
 set shortmess=at
 "
 "map <C-B> <ESC>:e %:p:h<RETURN>
@@ -118,7 +108,7 @@ let Tlist_File_Fold_Auto_Close = 1
 let Tlist_Enable_Fold_Column = 0
 "
 " for c-fold
-autocmd BufNewFile,BufRead *.c,*.cpp,*.java :CFOLD
+"autocmd BufNewFile,BufRead *.c,*.cpp,*.java :CFOLD
 " autocmd BufNewFile,BufRead *.c,*.cpp,*.java zM
 
 " for MySQL
@@ -222,10 +212,27 @@ au FileType go nmap <Leader>d <Plug>(go-describe)
 
 set backspace=indent,eol,start
 
-command Test GoTest
+command Pytest Pytest file
 
 if has('mouse_sgr')
 	set ttymouse=sgr
 endif
 
-au FileType go nmap <Leader>s <ESC>:Ag! <cword> <cr>
+au FileType go nmap <Leader>s :Ag! <cword><CR><CR>
+
+nmap <F1> <ESC>
+lmap <F1> <ESC>
+
+
+" set cindent
+" set autoindent
+set smartindent
+set tabstop=8
+"set softtabstop=4
+set softtabstop=8
+set shiftwidth=8
+"set shiftwidth=4
+"set noexpandtab
+set expandtab
+set smarttab
+set cino=:0,g0,t0

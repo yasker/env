@@ -236,3 +236,5 @@ set shiftwidth=8
 set expandtab
 set smarttab
 set cino=:0,g0,t0
+
+let g:go_fmt_options="-s"
